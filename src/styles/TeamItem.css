@@ -1,0 +1,70 @@
+/* TeamItem.css */
+.red {
+  background-color: red;
+}
+.team-block-wrapper {
+  margin: 0 auto;
+  width: 600px;
+}
+.team-block-wrapper .team-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 6px;
+}
+.team-block-wrapper .team-block .position {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-style: solid;
+  border-radius: 50%;
+  border-width: 3px;
+  font-weight: 900;
+}
+.team-block-wrapper .team-block .team-logo {
+  width: 40px;
+  height: 40px;
+  margin-left: 5px;
+}
+.team-block-wrapper .team-block .team-logo .team-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.team-block-wrapper .team-block .team-block-name {
+  width: 100px;
+  text-align: center;
+}
+.team-block-wrapper .team-block .team-statistics-numbers-block {
+  display: flex;
+  flex-direction: row;
+  width: 350px;
+  justify-content: center;
+}
+.team-block-wrapper
+  .team-block
+  .team-statistics-numbers-block
+  .team-statistic-item {
+  width: 50px;
+}
+.team-block-wrapper .team-block-underline {
+  display: block;
+  height: 3px;
+  margin-top: 5px;
+  border-radius: 50%;
+  /* Define thickness */
+  /* Remove default hr styling */
+  /* Spacing above and below */
+}
+.team-block-name {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+.team-block-rating {
+  padding: 4px 8px;
+  color: white;
+  font-weight: bold;
+  border-radius: 4px;
+}
