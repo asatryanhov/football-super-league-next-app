@@ -3,7 +3,7 @@ export default function League() {
   return (
     <>
       <ServerComponent
-        teamName="Barcelona"
+        teamName="barcelona"
         teamValue="987m"
         avarageAge="23.8"
         teamId={2817}
@@ -11,12 +11,125 @@ export default function League() {
         seasonId={61643}
       />
       <ServerComponent
-        teamName="Man City"
+        teamName="mancity"
         teamValue="1.2bn"
         avarageAge="28.6"
         teamId={17}
         tournamentId={17}
         seasonId={61627}
+      />
+      <ServerComponent
+        teamName="liverpool"
+        teamValue="1.1bn"
+        avarageAge="29.1"
+        teamId={44}
+        tournamentId={17}
+        seasonId={61627}
+      />
+      <ServerComponent
+        teamName="realmadrid"
+        teamValue="1.1bn"
+        avarageAge="29.1"
+        teamId={2829}
+        tournamentId={8}
+        seasonId={61643}
+      />
+      <ServerComponent
+        teamName="atmadrid"
+        teamValue="1.1bn"
+        avarageAge="29.1"
+        teamId={2836}
+        tournamentId={8}
+        seasonId={61643}
+      />
+      <ServerComponent
+        teamName="inter"
+        teamValue="1.1bn"
+        avarageAge="29.1"
+        teamId={2697}
+        tournamentId={23}
+        seasonId={63515}
+      />
+      <ServerComponent
+        teamName="milan"
+        teamValue="1.1bn"
+        avarageAge="29.1"
+        teamId={2692}
+        tournamentId={23}
+        seasonId={63515}
+      />
+      ;
+      <ServerComponent
+        teamName="juventus"
+        teamValue="1.1bn"
+        avarageAge="29.1"
+        teamId={2687}
+        tournamentId={23}
+        seasonId={63515}
+      />
+      <ServerComponent
+        teamName="arsenal"
+        teamValue="1.1bn"
+        avarageAge="29.1"
+        teamId={42}
+        tournamentId={17}
+        seasonId={61627}
+      />
+      <ServerComponent
+        teamName="manutd"
+        teamValue="1.1bn"
+        avarageAge="29.1"
+        teamId={35}
+        tournamentId={17}
+        seasonId={61627}
+      />
+      <ServerComponent
+        teamName="chelsea"
+        teamValue="1.1bn"
+        avarageAge="29.1"
+        teamId={38}
+        tournamentId={17}
+        seasonId={61627}
+      />
+      <ServerComponent
+        teamName="manutd"
+        teamValue="1.1bn"
+        avarageAge="29.1"
+        teamId={35}
+        tournamentId={17}
+        seasonId={61627}
+      />
+      <ServerComponent
+        teamName="psg"
+        teamValue="1.1bn"
+        avarageAge="29.1"
+        teamId={1644}
+        tournamentId={34}
+        seasonId={61736}
+      />
+      <ServerComponent
+        teamName="bayern"
+        teamValue="1.1bn"
+        avarageAge="29.1"
+        teamId={2672}
+        tournamentId={35}
+        seasonId={63516}
+      />
+      <ServerComponent
+        teamName="dortmund"
+        teamValue="1.1bn"
+        avarageAge="29.1"
+        teamId={2673}
+        tournamentId={35}
+        seasonId={63516}
+      />
+      <ServerComponent
+        teamName="bayer"
+        teamValue="1.1bn"
+        avarageAge="29.1"
+        teamId={2681}
+        tournamentId={35}
+        seasonId={63516}
       />
     </>
   );

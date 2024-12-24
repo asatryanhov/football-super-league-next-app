@@ -18,13 +18,14 @@ export default function ClientComponent({
       setTeamData(teamName, initialData);
     }
   }, [initialData, teamName, teamData, setTeamData]);
-
+  // console.log(teamData);
   return (
-    <TeamItem
-      data={teamData}
-      teamName={teamName}
-      avarageAge={avarageAge}
-      teamValue={teamValue}
-    />
+    // <TeamItem
+    //   data={teamData}
+    //   teamName={teamName}
+    //   avarageAge={avarageAge}
+    //   teamValue={teamValue}
+    // />
+    <></>
   );
 }
