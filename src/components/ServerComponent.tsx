@@ -3,8 +3,8 @@ import ClientComponent from "@/components/ClientComponent";
 
 export default async function ServerComponent({
   teamName,
-  avarageAge,
-  teamValue,
+  // avarageAge,
+  // teamValue,
   teamId,
   tournamentId,
   seasonId,
@@ -15,8 +15,8 @@ export default async function ServerComponent({
     <ClientComponent
       initialData={data}
       teamName={teamName}
-      teamValue={teamValue}
-      avarageAge={avarageAge}
+      // teamValue={teamValue}
+      // avarageAge={avarageAge}
     />
   );
 }
