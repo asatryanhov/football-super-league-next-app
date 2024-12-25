@@ -4,12 +4,15 @@ import useStore from "@/store/useStore";
 import { useEffect } from "react";
 // import TeamItem from "./TeamItem";
 
+interface ClientComponentProps {
+  initialData: any; // замените SomeType на реальный тип initialData
+  teamName: string;
+}
+
 export default function ClientComponent({
   initialData,
   teamName,
-  // avarageAge,
-  // teamValue,
-}) {
+}: ClientComponentProps) {
   const { teamsData, setTeamData } = useStore();
   const teamData = teamsData[teamName];
 
