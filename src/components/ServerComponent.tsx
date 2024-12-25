@@ -3,9 +3,9 @@ import ClientComponent from "@/components/ClientComponent";
 
 interface ServerComponentProps {
   teamName: string;
-  teamId: string;
-  tournamentId: string;
-  seasonId: string;
+  teamId: number;
+  tournamentId: number;
+  seasonId: number;
 }
 
 export default async function ServerComponent({
