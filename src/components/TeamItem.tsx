@@ -54,13 +54,15 @@ const TeamItem: React.FC<TeamItemProps> = ({
           {position}
         </div>
         <div className="team-logo">
-          <Image
-            className="team-logo-img"
-            src={logo}
-            alt="logo"
-            width={100}
-            height={100}
-          />
+          {logo && (
+            <Image
+              className="team-logo-img"
+              src={logo}
+              alt="logo"
+              width={100}
+              height={100}
+            />
+          )}
         </div>
         <div className="team-block-name">{teamName}</div>
 
