@@ -1,6 +1,6 @@
 import PQueue from "p-queue";
 
-const queue = new PQueue({ concurrency: 5 });
+const queue = new PQueue({ concurrency: 3 });
 
 export async function fetchData(teamId: any, tournamentId: any, seasonId: any) {
   if (!process.env.RAPIDAPI_KEY) {
