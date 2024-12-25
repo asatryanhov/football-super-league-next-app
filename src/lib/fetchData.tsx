@@ -36,7 +36,11 @@ export async function fetchData(teamId: any, tournamentId: any, seasonId: any) {
 
       return data;
     } catch (error) {
-      console.error("Ошибка при получении данных:", error.message);
+      if (error instanceof Error) {
+        console.error("Ошибка при получении данных:", error.message);
+      } else {
+        console.error("Неизвестная ошибка:", error);
+      }
       throw error;
     }
   });
