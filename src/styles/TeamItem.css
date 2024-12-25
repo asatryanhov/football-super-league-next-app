@@ -1,6 +1,6 @@
-.red {
+/* .red {
   background-color: red;
-}
+} */
 .team-block-wrapper {
   margin: 0 auto;
   width: 600px;
@@ -33,20 +33,21 @@
   object-fit: cover;
 }
 .team-block-wrapper .team-block .team-block-name {
-  width: 100px;
+  width: 150px;
   text-align: center;
 }
 .team-block-wrapper .team-block .team-statistics-numbers-block {
   display: flex;
   flex-direction: row;
   width: 350px;
-  justify-content: center;
+  justify-content: space-around;
 }
 .team-block-wrapper
   .team-block
   .team-statistics-numbers-block
   .team-statistic-item {
   width: 50px;
+  text-align: center;
 }
 .team-block-wrapper .team-block-underline {
   display: block;

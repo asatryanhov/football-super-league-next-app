@@ -44,7 +44,7 @@ export default function League() {
         tournamentId={23}
         seasonId={63515}
       />
-      ;
+
       <ServerComponent
         teamName="juventus"
         teamId={2687}

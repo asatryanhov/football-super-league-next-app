@@ -35,10 +35,12 @@ const TeamItem: React.FC<TeamItemProps> = ({
   const ratingBgColor = getRatingColor(rating);
   if (!data) {
     return (
-      <div className="team-item">
-        <h3>{teamName}</h3>
-        <p>No statistics available.</p>
-      </div>
+      // <div className="team-item">
+      //   <h3>{teamName}</h3>
+      //   <p>No statistics available.</p>
+      // </div>
+      // <div>Loading...</div>
+      <></>
     );
   }
   // console.log(typeof logo);

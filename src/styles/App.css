@@ -1,0 +1,64 @@
+body div {
+  border: 1px solid black;
+}
+/* text-center {
+  text-align: center;
+} */
+/* .red {
+  height: auto;
+  background-color: red;
+}
+.blue {
+  height: auto;
+  background-color: blue;
+}
+
+.orange {
+  height: auto;
+  background-color: orange;
+} */
+
+/* team-statistic-item55 {
+  font-size: 5px;
+  text-wrap: wrap;
+} */
+.regulate-width-block-header {
+  width: 70px;
+}
+.team-block-name-header {
+  width: 136px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+}
+.team-statistic-item-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  text-align: center;
+  font-size: 13px;
+  text-wrap: wrap;
+  line-height: normal;
+  font-weight: 700;
+}
+
+.team-block-rating-header {
+  width: 58px;
+  height: auto;
+  /* text-align: center; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+}
+.position-header {
+  border-color: white;
+}
+.team-statistics-numbers-block-header {
+  display: flex;
+  flex-direction: row;
+  width: 319px;
+  justify-content: space-around;
+}

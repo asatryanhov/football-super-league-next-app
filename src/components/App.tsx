@@ -2,6 +2,7 @@
 import images from "@/components/images";
 import useStore from "@/store/useStore";
 import TeamItem from "@/components/TeamItem";
+import "@/styles/App.css";
 
 export default function App() {
   const { teamsData } = useStore();
@@ -105,11 +106,39 @@ export default function App() {
 
   return (
     <div>
+      <div className="team-block-wrapper">
+        <div className="team-block">
+          {/* <div className="position-header"></div>
+          <div className="team-logo"></div> */}
+          <div className="regulate-width-block-header"></div>
+          <div className="team-block-name-header">team</div>
+
+          <div className="team-statistics-numbers-block-header">
+            <div className="goal-per-game team-statistic-item-header red">
+              goal per game
+            </div>
+            <div className="missedgoalpergame team-statistic-item-header blue">
+              miss goal per game
+            </div>
+            <div className="bigChances team-statistic-item-header orange">
+              big chances per game
+            </div>
+            <div className="bigchancesCreated team-statistic-item-header red">
+              created big chances per game
+            </div>
+            <div className="shootontarget team-statistic-item-header blue">
+              shoot on target per game
+            </div>
+          </div>
+
+          <div className="team-block-rating-header">rating</div>
+        </div>
+      </div>
       {teams.map((team, index) => (
         <TeamItem
-          key={team.teamName} // Используем уникальный teamName как ключ
-          data={team.teamStatistics} // Передаем статистику команды в TeamItem
-          teamName={team.teamName} // Передаем название команды
+          key={team.teamName}
+          data={team.teamStatistics}
+          teamName={team.teamName}
           logo={team.logo}
           teamRating={team.teamRating}
           position={index + 1}
