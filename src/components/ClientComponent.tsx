@@ -7,8 +7,8 @@ import { useEffect } from "react";
 export default function ClientComponent({
   initialData,
   teamName,
-  avarageAge,
-  teamValue,
+  // avarageAge,
+  // teamValue,
 }) {
   const { teamsData, setTeamData } = useStore();
   const teamData = teamsData[teamName];
