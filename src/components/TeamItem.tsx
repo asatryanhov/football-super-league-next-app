@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import "@/styles/TeamItem.css";
-function getRatingColor(rating) {
+function getRatingColor(rating: number): string {
   if (rating >= 7.25) return "#049EA1";
   if (rating >= 7.2) return "#65B300";
   if (rating >= 7.15) return "#C4CC00";
