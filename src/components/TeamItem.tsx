@@ -15,6 +15,7 @@ interface TeamItemProps {
     avgRating?: number;
     goalsScored?: number;
     assists?: number;
+    logo?: string; // Добавьте эту строку
     [key: string]: any;
   };
   teamName: string;
