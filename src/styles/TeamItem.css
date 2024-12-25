@@ -1,4 +1,3 @@
-/* TeamItem.css */
 .red {
   background-color: red;
 }
@@ -54,9 +53,6 @@
   height: 3px;
   margin-top: 5px;
   border-radius: 50%;
-  /* Define thickness */
-  /* Remove default hr styling */
-  /* Spacing above and below */
 }
 .team-block-name {
   font-size: 1.2em;

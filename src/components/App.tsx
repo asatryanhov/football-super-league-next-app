@@ -6,12 +6,10 @@ import TeamItem from "@/components/TeamItem";
 export default function App() {
   const { teamsData } = useStore();
 
-  // Если `teamsData` отсутствует, показываем состояние загрузки.
   if (!teamsData) {
     return <div>loading...</div>;
   }
 
-  // Подготовка массива команд.
   const teams = [
     {
       teamName: "Barcelona",
@@ -105,7 +103,6 @@ export default function App() {
     },
   ].sort((a, b) => b.teamRating - a.teamRating);
 
-  // Рендер компонента.
   return (
     <div>
       {teams.map((team, index) => (

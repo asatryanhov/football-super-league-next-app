@@ -2,7 +2,7 @@
 
 import useStore from "@/store/useStore";
 import { useEffect } from "react";
-import TeamItem from "./TeamItem";
+// import TeamItem from "./TeamItem";
 
 export default function ClientComponent({
   initialData,
@@ -18,14 +18,6 @@ export default function ClientComponent({
       setTeamData(teamName, initialData);
     }
   }, [initialData, teamName, teamData, setTeamData]);
-  // console.log(teamData);
-  return (
-    // <TeamItem
-    //   data={teamData}
-    //   teamName={teamName}
-    //   avarageAge={avarageAge}
-    //   teamValue={teamValue}
-    // />
-    <></>
-  );
+
+  return <></>;
 }

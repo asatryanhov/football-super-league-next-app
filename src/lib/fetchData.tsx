@@ -1,6 +1,6 @@
 import PQueue from "p-queue";
 
-const queue = new PQueue({ concurrency: 5 }); // Настройка параллельности
+const queue = new PQueue({ concurrency: 5 });
 
 export async function fetchData(teamId: any, tournamentId: any, seasonId: any) {
   if (!process.env.RAPIDAPI_KEY) {
@@ -13,12 +13,11 @@ export async function fetchData(teamId: any, tournamentId: any, seasonId: any) {
       "x-rapidapi-key": process.env.RAPIDAPI_KEY,
       "x-rapidapi-host": "sofascore.p.rapidapi.com",
     },
-    next: { revalidate: 604800 }, // Повторная проверка каждые 7 дней
+    next: { revalidate: 604800 },
   };
 
   const url = `https://sofascore.p.rapidapi.com/teams/get-statistics?teamId=${teamId}&tournamentId=${tournamentId}&seasonId=${seasonId}&type=overall`;
 
-  // Обёртка для fetch в очереди
   return queue.add(async () => {
     try {
       const res = await fetch(url, options);

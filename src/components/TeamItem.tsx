@@ -15,7 +15,7 @@ interface TeamItemProps {
     avgRating?: number;
     goalsScored?: number;
     assists?: number;
-    [key: string]: any; // Allow additional statistics if needed
+    [key: string]: any;
   };
   teamName: string;
 }
@@ -50,7 +50,6 @@ const TeamItem: React.FC<TeamItemProps> = ({
           {position}
         </div>
         <div className="team-logo">
-          {/* <img className="team-logo-img" src={logo} alt={`${teamName} logo`} /> */}
           <Image
             className="team-logo-img"
             src={logo}
@@ -77,10 +76,6 @@ const TeamItem: React.FC<TeamItemProps> = ({
           <div className="shootontarget team-statistic-item">
             {(data.shotsOnTarget / data.matches).toFixed(1)}
           </div>
-
-          {/* <div className="team-value">{teamValue}</div> */}
-
-          {/* <div className="team-avarage-age">{avarageAge}</div> */}
         </div>
 
         <div
@@ -93,15 +88,6 @@ const TeamItem: React.FC<TeamItemProps> = ({
         className="team-block-underline"
         style={{ backgroundColor: ratingBgColor }}></div>
     </div>
-    // <div className="team-item">
-    //   <h3>{teamName}</h3>
-    //   <div className="team-stats">
-    //     <p>Average Rating: {data.avgRating?.toFixed(2) || "N/A"}</p>
-    //     <p>Goals Scored: {data.goalsScored || "N/A"}</p>
-    //     <p>Assists: {data.assists || "N/A"}</p>
-    //     {/* Add more statistics as needed */}
-    //   </div>
-    // </div>
   );
 };
 
