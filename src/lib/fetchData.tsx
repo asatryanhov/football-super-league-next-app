@@ -38,7 +38,7 @@ export async function fetchData(teamId: any, tournamentId: any, seasonId: any) {
           `Ошибка при запросе: ${res.statusText} (${res.status})`
         );
       }
-
+      // console.log(data);
       return data;
     } catch (error) {
       if (error instanceof Error) {
