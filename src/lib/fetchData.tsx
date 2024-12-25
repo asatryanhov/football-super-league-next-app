@@ -33,6 +33,11 @@ export async function fetchData(teamId: any, tournamentId: any, seasonId: any) {
       if (!data || typeof data !== "object") {
         throw new Error("API вернул пустой или некорректный ответ");
       }
+      if (!res.ok) {
+        throw new Error(
+          `Ошибка при запросе: ${res.statusText} (${res.status})`
+        );
+      }
 
       return data;
     } catch (error) {
