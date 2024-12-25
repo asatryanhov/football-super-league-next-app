@@ -15,10 +15,13 @@ interface TeamItemProps {
     avgRating?: number;
     goalsScored?: number;
     assists?: number;
-    logo?: any;
+    // logo?: string;
     [key: string]: any;
   };
   teamName: string;
+  logo?: string;
+  teamRating?: any;
+  position?: any;
 }
 
 const TeamItem: React.FC<TeamItemProps> = ({
@@ -38,7 +41,7 @@ const TeamItem: React.FC<TeamItemProps> = ({
       </div>
     );
   }
-
+  // console.log(typeof logo);
   return (
     <div className="team-block-wrapper">
       <div className="team-block">
