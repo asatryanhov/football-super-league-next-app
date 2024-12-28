@@ -106,8 +106,8 @@ export default function App() {
 
   return (
     <div>
-      <div className="team-block-wrapper">
-        <div className="team-block">
+      <div className="team-block-wrapper-header">
+        <div className="team-block-header">
           {/* <div className="position-header"></div>
           <div className="team-logo"></div> */}
           <div className="regulate-width-block-header"></div>
@@ -128,6 +128,18 @@ export default function App() {
             </div>
             <div className="shootontarget team-statistic-item-header blue">
               shoot on target per game
+            </div>
+            <div className=" team-statistic-item-header blue">
+              average ball possession
+            </div>
+
+            <div className=" team-statistic-item-header blue">
+              accurate passes percentage
+            </div>
+            <div className=" team-statistic-item-header blue">clean sheets</div>
+            <div className=" team-statistic-item-header blue">hit woodwork</div>
+            <div className=" team-statistic-item-header blue">
+              duels won percentage
             </div>
           </div>
 

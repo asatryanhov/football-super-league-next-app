@@ -67,7 +67,6 @@ const TeamItem: React.FC<TeamItemProps> = ({
           )}
         </div>
         <div className="team-block-name">{teamName}</div>
-
         <div className="team-statistics-numbers-block">
           <div className="goal-per-game team-statistic-item">
             {(data.goalsScored! / data.matches).toFixed(2)}
@@ -84,8 +83,21 @@ const TeamItem: React.FC<TeamItemProps> = ({
           <div className="shootontarget team-statistic-item">
             {(data.shotsOnTarget / data.matches).toFixed(1)}
           </div>
-        </div>
+          <div className=" team-statistic-item">
+            {data.averageBallPossession.toFixed(1)}
+          </div>
+          <div className=" team-statistic-item">
+            {data.accuratePassesPercentage.toFixed(1)}
+          </div>
+          <div className=" team-statistic-item">{data.cleanSheets}</div>
 
+          <div className=" team-statistic-item">{data.hitWoodwork}</div>
+          <div className=" team-statistic-item">
+            {data.duelsWonPercentage.toFixed(2)}
+          </div>
+        </div>
+        {/* Average Ball Possession */}
+        {/* //------------------------------------------------------------------------ */}
         <div
           className="team-block-rating"
           style={{ backgroundColor: ratingBgColor }}>
