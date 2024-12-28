@@ -99,6 +99,39 @@ export default function League() {
         tournamentId={35}
         seasonId={63516}
       />
+      <ServerComponent
+        teamName="newcastle"
+        teamId={39}
+        tournamentId={17}
+        seasonId={61627}
+      />
+
+      <ServerComponent
+        teamName="lazio"
+        teamId={2699}
+        tournamentId={23}
+        seasonId={63515}
+      />
+
+      <ServerComponent
+        teamName="atalanta"
+        teamId={2686}
+        tournamentId={23}
+        seasonId={63515}
+      />
+      <ServerComponent
+        teamName="napoli"
+        teamId={2714}
+        tournamentId={23}
+        seasonId={63515}
+      />
+
+      <ServerComponent
+        teamName="atbilbao"
+        teamId={2825}
+        tournamentId={8}
+        seasonId={61643}
+      />
     </>
   );
 }

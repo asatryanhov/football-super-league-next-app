@@ -102,6 +102,36 @@ export default function App() {
       teamStatistics: teamsData.psg?.statistics,
       teamRating: teamsData.psg?.statistics?.avgRating || 0,
     },
+    {
+      teamName: "Newcastle",
+      logo: images.newcastleLOGO,
+      teamStatistics: teamsData.newcastle?.statistics,
+      teamRating: teamsData.newcastle?.statistics?.avgRating || 0,
+    },
+    {
+      teamName: "Lazio",
+      logo: images.lazioLOGO,
+      teamStatistics: teamsData.lazio?.statistics,
+      teamRating: teamsData.lazio?.statistics?.avgRating || 0,
+    },
+    {
+      teamName: "Atalanta",
+      logo: images.atalantaLOGO,
+      teamStatistics: teamsData.atalanta?.statistics,
+      teamRating: teamsData.atalanta?.statistics?.avgRating || 0,
+    },
+    {
+      teamName: "Napoli",
+      logo: images.napoliLOGO,
+      teamStatistics: teamsData.napoli?.statistics,
+      teamRating: teamsData.napoli?.statistics?.avgRating || 0,
+    },
+    {
+      teamName: "Atletic Bilbao",
+      logo: images.atbilbaoLOGO,
+      teamStatistics: teamsData.atbilbao?.statistics,
+      teamRating: teamsData.atbilbao?.statistics?.avgRating || 0,
+    },
   ].sort((a, b) => b.teamRating - a.teamRating);
 
   return (

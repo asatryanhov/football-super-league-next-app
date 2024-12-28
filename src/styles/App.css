@@ -36,9 +36,9 @@ body {
   box-sizing: border-box;
 }
 
-/* body div {
+body div {
   border: 1px solid black;
-} */
+}
 
 /* text-center {
   text-align: center;
@@ -80,7 +80,7 @@ body {
 }
 
 .regulate-width-block-header {
-  width: 70px;
+  width: 145px;
 }
 
 .team-block-name-header {
