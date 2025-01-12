@@ -40,36 +40,43 @@ body {
   border: 1px solid black;
 } */
 
-/* text-center {
-  text-align: center;
-} */
-/* .red {
+.red {
   height: auto;
-  background-color: red;
+  background-color: rgb(200, 50, 50, 0.4);
 }
+
 .blue {
   height: auto;
-  background-color: blue;
+  background-color: rgb(34, 73, 132, 0.4);
 }
 
 .orange {
   height: auto;
-  background-color: orange;
-} */
+  background-color: rgb(241, 194, 50, 0.4);
+}
 
-/* team-statistic-item55 {
-  font-size: 5px;
-  text-wrap: wrap;
-} */
+.violet {
+  background-color: rgb(125, 60, 181, 0.4);
+}
+
+.grey {
+  background-color: rgb(52, 120, 152, 0.4);
+}
+
+.green {
+  background-color: rgb(45, 132, 70, 0.4);
+}
+
+
 
 
 
 .team-block-wrapper-header {
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
+
+
   margin: 0 auto;
-  width: 1200px;
+  width: 1400px;
+
 }
 
 .team-block-header {
@@ -80,22 +87,33 @@ body {
 }
 
 .regulate-width-block-header {
-  width: 145px;
+  width: 135px;
 }
 
 .team-block-name-header {
   width: 150px;
+  height: 59px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: 700;
+  border-radius: 10 0 0 10;
+  background-color: rgb(207, 45, 122, 0.4);
 }
+
+/* .team-performance-stats {
+  background-color: yellow;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+} */
 
 .team-statistic-item-header {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50px;
+  width: 60px;
   text-align: center;
   font-size: 13px;
   text-wrap: wrap;
@@ -105,17 +123,22 @@ body {
 
 .team-block-rating-header {
   width: 55px;
+  height: 58px;
   padding: 1px 4px;
-  height: auto;
+  /* height: 60px; */
   /* text-align: center; */
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: 700;
+  background-color: rgb(220, 90, 30, 0.4);
+  border-radius: 0 10 10 0;
 }
 
 .position-header {
+  height: auto;
   border-color: white;
+  background-color: rgb(85, 188, 202, 0.2);
 }
 
 .team-statistics-numbers-block-header {

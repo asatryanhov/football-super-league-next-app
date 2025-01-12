@@ -68,11 +68,21 @@ const TeamItem: React.FC<TeamItemProps> = ({
         </div>
         <div className="team-block-name">{teamName}</div>
         <div className="team-statistics-numbers-block">
+          {/* Team Performance Stats */}
           <div className="goal-per-game team-statistic-item">
             {(data.goalsScored! / data.matches).toFixed(2)}
           </div>
           <div className="missedgoalpergame team-statistic-item">
             {(data.goalsConceded / data.matches).toFixed(2)}
+          </div>
+          <div className=" team-statistic-item">{data.cleanSheets}</div>
+          {/* Team Performance Stats END*/}
+          {/* Shooting & Attacking Stats */}
+          <div className=" team-statistic-item">
+            {(data.shots / data.matches).toFixed(1)}
+          </div>
+          <div className="shootontarget team-statistic-item">
+            {(data.shotsOnTarget / data.matches).toFixed(1)}
           </div>
           <div className="bigChances team-statistic-item">
             {(data.bigChances / data.matches).toFixed(1)}
@@ -80,21 +90,62 @@ const TeamItem: React.FC<TeamItemProps> = ({
           <div className="bigchancesCreated team-statistic-item">
             {(data.bigChancesCreated / data.matches).toFixed(1)}
           </div>
-          <div className="shootontarget team-statistic-item">
-            {(data.shotsOnTarget / data.matches).toFixed(1)}
-          </div>
+          {/* <div className="bigchancesCreated team-statistic-item">
+            {(data.bigChancesMissed / data.matches).toFixed(1)}
+          </div> */}
+
+          {/* Shooting & Attacking Stats END*/}
+
+          {/* Passes & Possession */}
           <div className=" team-statistic-item">
             {data.averageBallPossession.toFixed(1)}
           </div>
+
           <div className=" team-statistic-item">
             {data.accuratePassesPercentage.toFixed(1)}
           </div>
-          <div className=" team-statistic-item">{data.cleanSheets}</div>
+          {/* Passes & Possession END*/}
 
-          <div className=" team-statistic-item">{data.hitWoodwork}</div>
+          {/* Defensive Stats*/}
           <div className=" team-statistic-item">
-            {data.duelsWonPercentage.toFixed(2)}
+            {(data.tackles / data.matches).toFixed(1)}
           </div>
+
+          <div className=" team-statistic-item">
+            {(data.interceptions / data.matches).toFixed(1)}
+          </div>
+          <div className=" team-statistic-item">
+            {(data.clearances / data.matches).toFixed(1)}
+          </div>
+          <div className=" team-statistic-item">
+            {(data.errorsLeadingToGoal / data.matches).toFixed(1)}
+          </div>
+
+          <div className=" team-statistic-item">
+            {(data.fouls / data.matches).toFixed(1)}
+          </div>
+          {/* Defensive Stats END*/}
+
+          {/* Duels & Challenges*/}
+          <div className=" team-statistic-item">
+            {data.duelsWonPercentage.toFixed(1)}
+          </div>
+          {/* Duels & Challenges END*/}
+          {/* <div className=" team-statistic-item">{data.hitWoodwork}</div> */}
+          {/* Goalkeeper & Defense Stats*/}
+          <div className=" team-statistic-item">
+            {(data.saves / data.matches).toFixed(1)}
+          </div>
+          <div className=" team-statistic-item">
+            {(data.shotsAgainst / data.matches).toFixed(1)}
+          </div>
+          <div className=" team-statistic-item">
+            {(data.shotsBlockedAgainst / data.matches).toFixed(1)}
+          </div>
+          <div className=" team-statistic-item">
+            {(data.interceptionsAgainst / data.matches).toFixed(1)}
+          </div>
+          {/* Goalkeeper & Defense Stats END*/}
         </div>
         {/* Average Ball Possession */}
         {/* //------------------------------------------------------------------------ */}

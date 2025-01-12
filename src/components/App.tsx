@@ -144,33 +144,73 @@ export default function App() {
           <div className="team-block-name-header">team</div>
 
           <div className="team-statistics-numbers-block-header">
+            {/* Team Performance Stats */}
             <div className="goal-per-game team-statistic-item-header red">
-              goal per game
+              goal pg
             </div>
-            <div className="missedgoalpergame team-statistic-item-header blue">
-              miss goal per game
+            <div className="missedgoalpergame team-statistic-item-header red">
+              miss goal pg
             </div>
-            <div className="bigChances team-statistic-item-header orange">
-              big chances per game
-            </div>
-            <div className="bigchancesCreated team-statistic-item-header red">
-              created big chances per game
-            </div>
+            <div className=" team-statistic-item-header red">clean sheets</div>
+            {/* Team Performance Stats END*/}
+            {/* Shooting & Attacking Stats */}
+            <div className=" team-statistic-item-header blue">shots pg</div>
             <div className="shootontarget team-statistic-item-header blue">
-              shoot on target per game
+              shoot on target pg
             </div>
-            <div className=" team-statistic-item-header blue">
-              average ball possession
+            <div className="bigChances team-statistic-item-header blue">
+              big chances pg
+            </div>
+            <div className="bigchancesCreated team-statistic-item-header blue">
+              created big chances pg
+            </div>
+            {/* Shooting & Attacking Stats END */}
+
+            {/* Passes & Possession */}
+            <div className=" team-statistic-item-header orange">
+              avg ball poss ession
             </div>
 
-            <div className=" team-statistic-item-header blue">
-              accurate passes percentage
+            <div className=" team-statistic-item-header orange">
+              accurate passes %
             </div>
-            <div className=" team-statistic-item-header blue">clean sheets</div>
-            <div className=" team-statistic-item-header blue">hit woodwork</div>
-            <div className=" team-statistic-item-header blue">
-              duels won percentage
+            {/* Passes & Possession END*/}
+
+            {/* Defensive Stats*/}
+            <div className=" team-statistic-item-header violet">tackles pg</div>
+            <div className=" team-statistic-item-header violet">
+              inter ceptions pg
             </div>
+
+            <div className=" team-statistic-item-header violet">
+              clear ances pg
+            </div>
+            <div className=" team-statistic-item-header violet">
+              errors leading to goal pg
+            </div>
+
+            <div className=" team-statistic-item-header violet">fouls pg</div>
+
+            {/* Defensive Stats END*/}
+
+            {/* Duels & Challenges*/}
+            <div className=" team-statistic-item-header grey">duels won %</div>
+            {/* Duels & Challenges END*/}
+
+            {/* Goalkeeper & Defense Stats*/}
+            <div className=" team-statistic-item-header green">gk saves pg</div>
+            <div className=" team-statistic-item-header green">
+              shots against pg
+            </div>
+            <div className=" team-statistic-item-header green">
+              shots blocked against pg
+            </div>
+            <div className=" team-statistic-item-header green">
+              inter ceptions against pg
+            </div>
+            {/* Goalkeeper & Defense Stats END*/}
+
+            {/* <div className=" team-statistic-item-header blue">hit woodwork</div> */}
           </div>
 
           <div className="team-block-rating-header">rating</div>

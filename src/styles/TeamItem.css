@@ -3,7 +3,7 @@
 } */
 .team-block-wrapper {
   margin: 0 auto;
-  width: 1200px;
+  width: 1400px;
 }
 
 .team-block {
@@ -46,6 +46,8 @@
 .team-block-name {
   width: 150px;
   text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
 }
 
 .team-statistics-numbers-block {
@@ -53,10 +55,11 @@
   flex-direction: row;
   width: 1000px;
   justify-content: space-around;
+  font-size: 1.3rem;
 }
 
 .team-statistic-item {
-  width: 50px;
+  width: 60px;
   text-align: center;
 }
 
@@ -67,17 +70,15 @@
   border-radius: 50%;
 }
 
-.team-block-name {
-  font-size: 1.2em;
-  font-weight: bold;
-}
+.team-block-name {}
 
 .team-block-rating {
   padding: 1px 4px;
-  width: 55px;
+  width: 65px;
   color: white;
   font-weight: bold;
   border-radius: 4px;
+  font-size: 1.4rem;
 }
 
 /* For tablet devices */
