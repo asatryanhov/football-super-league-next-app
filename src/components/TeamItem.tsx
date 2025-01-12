@@ -2,14 +2,17 @@
 import Image from "next/image";
 import "@/styles/TeamItem.css";
 function getRatingColor(rating: number): string {
-  if (rating >= 7.25) return "#049EA1";
-  if (rating >= 7.2) return "#65B300";
-  if (rating >= 7.15) return "#C4CC00";
-  if (rating >= 7.1) return "#FABA00";
-  if (rating >= 6.95) return "#FF7B00";
-  if (rating >= 6.85) return "#E91D27";
+  if (rating >= 7.25) return "#1F3A44"; // Darker blue-green
+  if (rating >= 7.2) return "#006F3C"; // Dark green
+  if (rating >= 7.15) return "#3B6E00"; // Medium-dark yellow-green
+  if (rating >= 7.1) return "#858C00"; // Olive green
+  if (rating >= 7.05) return "#E09000"; // Golden yellow
+  if (rating >= 7.0) return "#FF8200"; // Vivid orange
+  if (rating >= 6.95) return "#FF5733"; // Bright orange-red
+  if (rating >= 6.75) return "#F02A3D"; // Dark red
   return "#FFFFFF";
 }
+
 interface TeamItemProps {
   data?: {
     avgRating?: number;

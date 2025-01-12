@@ -97,7 +97,7 @@ body {
   justify-content: center;
   align-items: center;
   font-weight: 700;
-  border-radius: 10 0 0 10;
+  border-radius: 10px 0px 0px 10px;
   background-color: rgb(207, 45, 122, 0.4);
 }
 
@@ -132,7 +132,7 @@ body {
   align-items: center;
   font-weight: 700;
   background-color: rgb(220, 90, 30, 0.4);
-  border-radius: 0 10 10 0;
+  border-radius: 0px 10px 10px 0px;
 }
 
 .position-header {
@@ -148,6 +148,29 @@ body {
   width: 1000px;
   justify-content: space-around;
 }
+
+
+.stats-container strong {
+  background-color: rgb(85, 188, 202, 0.1);
+  font-weight: 700;
+  /* Keep the bold style */
+  text-decoration: underline;
+  /* Apply underline style */
+}
+
+.stats-container {
+  margin-top: 15px;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; */
+  width: 100%;
+  font-style: italic;
+  text-align: center;
+  font-weight: 100;
+}
+
+
 
 /* For tablet devices */
 @media (max-width: 1024px) {}
