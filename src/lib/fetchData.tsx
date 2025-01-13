@@ -58,7 +58,7 @@ export async function fetchData(teamId: any, tournamentId: any, seasonId: any) {
       "x-rapidapi-key": process.env.RAPIDAPI_KEY,
       "x-rapidapi-host": "sofascore.p.rapidapi.com",
     },
-    next: { revalidate: 604800 }, // Revalidate data every 7 days
+    next: { revalidate: 604800 },
   };
 
   const url = `https://sofascore.p.rapidapi.com/teams/get-statistics?teamId=${teamId}&tournamentId=${tournamentId}&seasonId=${seasonId}&type=overall`;
