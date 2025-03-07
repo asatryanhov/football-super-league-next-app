@@ -1,5 +1,7 @@
 import PQueue from "p-queue";
 
+export const revalidate = 604800; // Глобальное кэширование на 7 дней
+
 const queue = new PQueue({ concurrency: 3 });
 
 const MAX_RETRIES = 5; // Max retries in case of 429 error
@@ -58,7 +60,7 @@ export async function fetchData(teamId: any, tournamentId: any, seasonId: any) {
       "x-rapidapi-key": process.env.RAPIDAPI_KEY,
       "x-rapidapi-host": "sofascore.p.rapidapi.com",
     },
-    next: { revalidate: 604800 },
+    next: { revalidate: 604800 }, // Кэширование fetch() на 7 дней
   };
 
   const url = `https://sofascore.p.rapidapi.com/teams/get-statistics?teamId=${teamId}&tournamentId=${tournamentId}&seasonId=${seasonId}&type=overall`;
