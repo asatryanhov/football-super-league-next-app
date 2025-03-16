@@ -1,6 +1,8 @@
 import PQueue from "p-queue";
 
-export const revalidate = 604800; // Глобальное кэширование на 7 дней
+// export const revalidate = 604800; // Глобальное кэширование на 7 дней
+
+export const revalidate = 86400;
 
 const queue = new PQueue({ concurrency: 3 });
 
@@ -16,7 +18,13 @@ async function retryFetch(
 
     if (!res.ok) {
       if (res.status === 429 && attempt <= MAX_RETRIES) {
-        const retryAfter = parseInt(res.headers.get("retry-after") || "1", 10);
+        // const retryAfter = parseInt(res.headers.get("retry-after") || "1", 10); old version
+
+        const retryAfter = Math.max(
+          parseInt(res.headers.get("retry-after") || "1", 10),
+          5
+        ); // Минимум 5 сек
+
         console.log(`Too many requests, retrying in ${retryAfter} seconds...`);
         await new Promise((resolve) => setTimeout(resolve, retryAfter * 1000));
         return retryFetch(url, options, attempt + 1);
@@ -60,7 +68,7 @@ export async function fetchData(teamId: any, tournamentId: any, seasonId: any) {
       "x-rapidapi-key": process.env.RAPIDAPI_KEY,
       "x-rapidapi-host": "sofascore.p.rapidapi.com",
     },
-    next: { revalidate: 604800 }, // Кэширование fetch() на 7 дней
+    next: { revalidate }, // Кэширование fetch() на 7 дней
   };
 
   const url = `https://sofascore.p.rapidapi.com/teams/get-statistics?teamId=${teamId}&tournamentId=${tournamentId}&seasonId=${seasonId}&type=overall`;
