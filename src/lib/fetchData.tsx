@@ -1,8 +1,8 @@
 import PQueue from "p-queue";
 
-// export const revalidate = 604800; // Глобальное кэширование на 7 дней
+export const revalidate = 604800; // Глобальное кэширование на 7 дней
 
-export const revalidate = 86400;
+// export const revalidate = 86400;
 
 const queue = new PQueue({ concurrency: 3 });
 
