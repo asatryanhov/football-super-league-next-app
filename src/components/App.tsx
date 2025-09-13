@@ -2,10 +2,81 @@
 import images from "@/components/images";
 import useStore from "@/store/useStore";
 import TeamItem from "@/components/TeamItem";
+import TeamDetail from "@/components/TeamDetail";
+import { useState, useEffect } from "react";
 import "@/styles/App.css";
 
+interface Team {
+  teamName: string;
+  logo: string;
+  teamStatistics?: any;
+  teamRating: number;
+}
+
 export default function App() {
-  const { teamsData } = useStore();
+  const { teamsData, refreshData } = useStore();
+  const [selectedTeam, setSelectedTeam] = useState<Team | null>(null);
+  const [isDetailOpen, setIsDetailOpen] = useState(false);
+
+  // Автоматическое обновление каждый понедельник в 00:30
+  useEffect(() => {
+    const scheduleWeeklyUpdate = () => {
+      const now = new Date();
+      const nextMonday = new Date();
+
+      // Находим следующий понедельник
+      const daysUntilMonday = (1 + 7 - now.getDay()) % 7;
+      if (
+        daysUntilMonday === 0 &&
+        now.getHours() >= 0 &&
+        now.getMinutes() >= 30
+      ) {
+        // Если сегодня понедельник и время уже прошло, переходим к следующему понедельнику
+        nextMonday.setDate(now.getDate() + 7);
+      } else {
+        nextMonday.setDate(now.getDate() + (daysUntilMonday || 7));
+      }
+
+      // Устанавливаем время 00:30
+      nextMonday.setHours(0, 30, 0, 0);
+
+      const timeUntilUpdate = nextMonday.getTime() - now.getTime();
+
+      console.log(
+        `📅 Следующее автообновление: ${nextMonday.toLocaleString("ru-RU")}`
+      );
+      console.log(
+        `⏰ Осталось времени: ${Math.round(
+          timeUntilUpdate / (1000 * 60 * 60 * 24)
+        )} дней`
+      );
+
+      // Устанавливаем таймер
+      const timeoutId = setTimeout(() => {
+        console.log("🔄 Выполняется еженедельное обновление данных...");
+        refreshData();
+      }, timeUntilUpdate);
+
+      return timeoutId;
+    };
+
+    const timeoutId = scheduleWeeklyUpdate();
+
+    // Очищаем таймер при размонтировании компонента
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [refreshData]);
+
+  const handleTeamClick = (team: Team) => {
+    setSelectedTeam(team);
+    setIsDetailOpen(true);
+  };
+
+  const handleCloseDetail = () => {
+    setIsDetailOpen(false);
+    setSelectedTeam(null);
+  };
 
   if (!teamsData) {
     return <div>loading...</div>;
@@ -17,125 +88,204 @@ export default function App() {
       logo: images.barcelonaLOGO,
       teamStatistics: teamsData.barcelona?.statistics,
       teamRating: teamsData.barcelona?.statistics?.avgRating || 0,
+      hasData: !!teamsData.barcelona,
     },
     {
       teamName: "Man City",
       logo: images.mancityLOGO,
       teamStatistics: teamsData.mancity?.statistics,
       teamRating: teamsData.mancity?.statistics?.avgRating || 0,
+      hasData: !!teamsData.mancity,
     },
     {
       teamName: "Liverpool",
       logo: images.liverpoolLOGO,
       teamStatistics: teamsData.liverpool?.statistics,
       teamRating: teamsData.liverpool?.statistics?.avgRating || 0,
+      hasData: !!teamsData.liverpool,
     },
     {
       teamName: "Real Madrid",
       logo: images.realLOGO,
       teamStatistics: teamsData.realmadrid?.statistics,
       teamRating: teamsData.realmadrid?.statistics?.avgRating || 0,
+      hasData: !!teamsData.realmadrid,
     },
     {
       teamName: "Arsenal",
       logo: images.arsenalLOGO,
       teamStatistics: teamsData.arsenal?.statistics,
       teamRating: teamsData.arsenal?.statistics?.avgRating || 0,
+      hasData: !!teamsData.arsenal,
     },
     {
       teamName: "Atletico M.",
       logo: images.atmadridLOGO,
       teamStatistics: teamsData.atmadrid?.statistics,
       teamRating: teamsData.atmadrid?.statistics?.avgRating || 0,
+      hasData: !!teamsData.atmadrid,
     },
     {
       teamName: "Bayer",
       logo: images.bayerLOGO,
       teamStatistics: teamsData.bayer?.statistics,
       teamRating: teamsData.bayer?.statistics?.avgRating || 0,
+      hasData: !!teamsData.bayer,
     },
     {
       teamName: "Beyern M.",
       logo: images.bayernLOGO,
       teamStatistics: teamsData.bayern?.statistics,
       teamRating: teamsData.bayern?.statistics?.avgRating || 0,
+      hasData: !!teamsData.bayern,
     },
     {
       teamName: "Chelsea",
       logo: images.chelseaLOGO,
       teamStatistics: teamsData.chelsea?.statistics,
       teamRating: teamsData.chelsea?.statistics?.avgRating || 0,
+      hasData: !!teamsData.chelsea,
     },
     {
       teamName: "Dortmund",
       logo: images.dortmundLOGO,
       teamStatistics: teamsData.dortmund?.statistics,
       teamRating: teamsData.dortmund?.statistics?.avgRating || 0,
+      hasData: !!teamsData.dortmund,
     },
     {
       teamName: "Inter",
       logo: images.interLOGO,
       teamStatistics: teamsData.inter?.statistics,
       teamRating: teamsData.inter?.statistics?.avgRating || 0,
+      hasData: !!teamsData.inter,
     },
     {
       teamName: "Juventus",
       logo: images.juventusLOGO,
       teamStatistics: teamsData.juventus?.statistics,
       teamRating: teamsData.juventus?.statistics?.avgRating || 0,
+      hasData: !!teamsData.juventus,
     },
     {
       teamName: "Man united",
       logo: images.manutdLOGO,
       teamStatistics: teamsData.manutd?.statistics,
       teamRating: teamsData.manutd?.statistics?.avgRating || 0,
+      hasData: !!teamsData.manutd,
     },
     {
       teamName: "Milan",
       logo: images.milanLOGO,
       teamStatistics: teamsData.milan?.statistics,
       teamRating: teamsData.milan?.statistics?.avgRating || 0,
+      hasData: !!teamsData.milan,
     },
     {
       teamName: "PSG",
       logo: images.psgLOGO,
       teamStatistics: teamsData.psg?.statistics,
       teamRating: teamsData.psg?.statistics?.avgRating || 0,
+      hasData: !!teamsData.psg,
     },
     {
       teamName: "Newcastle",
       logo: images.newcastleLOGO,
       teamStatistics: teamsData.newcastle?.statistics,
       teamRating: teamsData.newcastle?.statistics?.avgRating || 0,
+      hasData: !!teamsData.newcastle,
     },
     {
       teamName: "Lazio",
       logo: images.lazioLOGO,
       teamStatistics: teamsData.lazio?.statistics,
       teamRating: teamsData.lazio?.statistics?.avgRating || 0,
+      hasData: !!teamsData.lazio,
     },
     {
       teamName: "Atalanta",
       logo: images.atalantaLOGO,
       teamStatistics: teamsData.atalanta?.statistics,
       teamRating: teamsData.atalanta?.statistics?.avgRating || 0,
+      hasData: !!teamsData.atalanta,
     },
     {
       teamName: "Napoli",
       logo: images.napoliLOGO,
       teamStatistics: teamsData.napoli?.statistics,
       teamRating: teamsData.napoli?.statistics?.avgRating || 0,
+      hasData: !!teamsData.napoli,
     },
     {
       teamName: "Atletic Bilbao",
       logo: images.atbilbaoLOGO,
       teamStatistics: teamsData.atbilbao?.statistics,
       teamRating: teamsData.atbilbao?.statistics?.avgRating || 0,
+      hasData: !!teamsData.atbilbao,
     },
-  ].sort((a, b) => b.teamRating - a.teamRating);
+  ].sort((a, b) => {
+    // Teams with data first, then by rating
+    if (a.hasData && !b.hasData) return -1;
+    if (!a.hasData && b.hasData) return 1;
+    return b.teamRating - a.teamRating;
+  });
+
+  console.log("Total teams:", teams.length);
+  console.log(
+    "Teams with rating > 0:",
+    teams.filter((t) => t.teamRating > 0).length
+  );
+  console.log("Teams data keys:", Object.keys(teamsData));
+  console.log("Teams with hasData:", teams.filter((t) => t.hasData).length);
+
+  // Debug specific problematic teams
+  console.log("=== DEBUGGING PROBLEMATIC TEAMS ===");
+  console.log("atmadrid data:", teamsData.atmadrid ? "EXISTS" : "MISSING");
+  console.log("newcastle data:", teamsData.newcastle ? "EXISTS" : "MISSING");
+  console.log("bayer data:", teamsData.bayer ? "EXISTS" : "MISSING");
+  if (teamsData.atmadrid)
+    console.log("atmadrid rating:", teamsData.atmadrid.statistics?.avgRating);
+  if (teamsData.newcastle)
+    console.log("newcastle rating:", teamsData.newcastle.statistics?.avgRating);
+  if (teamsData.bayer)
+    console.log("bayer rating:", teamsData.bayer.statistics?.avgRating);
+
+  // Show all teams, even those without data
+  const allTeams = teams.map((team, index) => ({
+    ...team,
+    displayPosition: index + 1,
+  }));
 
   return (
     <div>
+      {/* <div style={{ 
+        padding: '10px', 
+        marginBottom: '20px', 
+        background: '#f0f0f0', 
+        borderRadius: '8px',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+      }}>
+        <div>
+          <strong>📊 Данные обновляются автоматически каждый понедельник в 00:30</strong>
+        </div>
+        <button 
+          onClick={refreshData}
+          style={{
+            padding: '8px 16px',
+            backgroundColor: '#007bff',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer',
+            fontSize: '14px'
+          }}
+        >
+          🔄 Обновить сейчас
+        </button>
+      </div> */}
+
       <div className="team-block-wrapper-header">
         <div className="team-block-header">
           {/* <div className="position-header"></div>
@@ -216,16 +366,35 @@ export default function App() {
           <div className="team-block-rating-header">rating</div>
         </div>
       </div>
-      {teams.map((team, index) => (
+      {allTeams.map((team, index) => (
         <TeamItem
           key={team.teamName}
           data={team.teamStatistics}
           teamName={team.teamName}
           logo={team.logo}
           teamRating={team.teamRating}
-          position={index + 1}
+          position={team.displayPosition}
+          onTeamClick={() => handleTeamClick(team)}
         />
       ))}
+
+      {/* Show teams that don't have data yet */}
+      {Object.keys(teamsData).length < 20 && (
+        <div style={{ padding: "10px", color: "gray" }}>
+          Loading remaining teams... ({Object.keys(teamsData).length}/20 loaded)
+        </div>
+      )}
+
+      {isDetailOpen && selectedTeam && (
+        <TeamDetail
+          isOpen={isDetailOpen}
+          onClose={handleCloseDetail}
+          teamName={selectedTeam.teamName}
+          logo={selectedTeam.logo}
+          data={selectedTeam.teamStatistics}
+          teamRating={selectedTeam.teamRating}
+        />
+      )}
 
       {teamsData && (
         <div className="team-block-wrapper">

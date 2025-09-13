@@ -16,11 +16,30 @@ export default function ClientComponent({
   const { teamsData, setTeamData } = useStore();
   const teamData = teamsData[teamName];
 
+  // Log when component mounts
+  console.log(`ClientComponent mounted for ${teamName}:`, {
+    hasInitialData: !!initialData,
+    initialData: initialData,
+    teamDataExists: !!teamData,
+  });
+
+  // Immediately set data without useEffect
+  if (!teamData && initialData) {
+    console.log(`Immediately setting data for ${teamName}`);
+    setTeamData(teamName, initialData);
+  }
+
   useEffect(() => {
-    if (!teamData) {
-      setTeamData(teamName, initialData);
-    }
-  }, [initialData, teamName, teamData, setTeamData]);
+    console.log(`useEffect triggered for ${teamName}:`, {
+      hasTeamData: !!teamData,
+      hasInitialData: !!initialData,
+      initialDataDetails: initialData,
+    });
+
+    // Always set data, regardless of whether it exists or not
+    console.log(`Forcefully setting data for ${teamName}`);
+    setTeamData(teamName, initialData || { statistics: null });
+  }, [initialData, teamName, setTeamData]); // Removed teamData from dependencies
 
   return <></>;
 }

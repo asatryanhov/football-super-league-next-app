@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import "@/styles/TeamItem.css";
+
 function getRatingColor(rating: number): string {
   if (rating >= 7.25) return "#1F3A44"; // Darker blue-green
   if (rating >= 7.2) return "#006F3C"; // Dark green
@@ -11,6 +12,38 @@ function getRatingColor(rating: number): string {
   if (rating >= 6.95) return "#FF5733"; // Bright orange-red
   if (rating >= 6.75) return "#F02A3D"; // Dark red
   return "#FFFFFF";
+}
+
+// Функция для получения цвета по позиции (градация от зеленого через желтый и оранжевый к красному)
+function getPositionColor(position: number): string {
+  if (!position || position < 1 || position > 20) return "#808080"; // Серый для некорректных позиций
+
+  // Нормализуем позицию от 0 до 1 (1 место = 0, 20 место = 1)
+  const normalized = (position - 1) / 19;
+
+  let red, green, blue;
+
+  if (normalized <= 0.33) {
+    // Переход от темно-зеленого к более темному желто-зеленому (позиции 1-7)
+    const t = normalized / 0.33;
+    red = Math.round(0 + t * 140); // От 0 до 140 (более темный)
+    green = Math.round(100 + t * 120); // От 100 до 220 (более темный)
+    blue = 0;
+  } else if (normalized <= 0.66) {
+    // Переход от темного желто-зеленого к темному оранжевому (позиции 8-13)
+    const t = (normalized - 0.33) / 0.33;
+    red = Math.round(140 + t * 80); // От 140 до 220 (более темный)
+    green = Math.round(220 - t * 100); // От 220 до 120 (более темный)
+    blue = 0;
+  } else {
+    // Переход от темного оранжевого к темно-красному (позиции 14-20)
+    const t = (normalized - 0.66) / 0.34;
+    red = Math.round(220 - t * 81); // От 220 до 139
+    green = Math.round(120 - t * 120); // От 120 до 0
+    blue = 0;
+  }
+
+  return `rgb(${red}, ${green}, ${blue})`;
 }
 
 interface TeamItemProps {
@@ -25,6 +58,7 @@ interface TeamItemProps {
   logo?: string;
   teamRating?: any;
   position?: any;
+  onTeamClick?: () => void;
 }
 
 const TeamItem: React.FC<TeamItemProps> = ({
@@ -33,9 +67,11 @@ const TeamItem: React.FC<TeamItemProps> = ({
   logo,
   teamRating,
   position,
+  onTeamClick,
 }) => {
   const rating = Number(teamRating);
-  const ratingBgColor = getRatingColor(rating);
+  // Используем цвет по позиции вместо рейтинга
+  const ratingBgColor = getPositionColor(position);
   if (!data) {
     return (
       // <div className="team-item">
@@ -58,7 +94,10 @@ const TeamItem: React.FC<TeamItemProps> = ({
           }}>
           {position}
         </div>
-        <div className="team-logo">
+        <div
+          className="team-logo"
+          onClick={onTeamClick}
+          style={{ cursor: onTeamClick ? "pointer" : "default" }}>
           {logo && (
             <Image
               className="team-logo-img"
@@ -69,7 +108,12 @@ const TeamItem: React.FC<TeamItemProps> = ({
             />
           )}
         </div>
-        <div className="team-block-name">{teamName}</div>
+        <div
+          className="team-block-name"
+          onClick={onTeamClick}
+          style={{ cursor: onTeamClick ? "pointer" : "default" }}>
+          {teamName}
+        </div>
         <div className="team-statistics-numbers-block">
           {/* Team Performance Stats */}
           <div className="goal-per-game team-statistic-item">
@@ -155,7 +199,7 @@ const TeamItem: React.FC<TeamItemProps> = ({
         <div
           className="team-block-rating"
           style={{ backgroundColor: ratingBgColor }}>
-          {data.avgRating!.toFixed(3)}
+          {teamRating ? Number(teamRating).toFixed(3) : "0.000"}
         </div>
       </div>
       <div

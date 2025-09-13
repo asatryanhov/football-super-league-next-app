@@ -14,7 +14,19 @@ export default async function ServerComponent({
   tournamentId,
   seasonId,
 }: ServerComponentProps) {
-  const data = await fetchData(teamId, tournamentId, seasonId);
+  console.log(
+    `Fetching data for ${teamName} (ID: ${teamId}, Tournament: ${tournamentId}, Season: ${seasonId})`
+  );
 
-  return <ClientComponent initialData={data} teamName={teamName} />;
+  try {
+    const data = await fetchData(teamId, tournamentId, seasonId);
+    console.log(
+      `Successfully fetched data for ${teamName}:`,
+      data ? "Data received" : "No data"
+    );
+    return <ClientComponent initialData={data} teamName={teamName} />;
+  } catch (error) {
+    console.error(`Error fetching data for ${teamName}:`, error);
+    return <ClientComponent initialData={null} teamName={teamName} />;
+  }
 }
