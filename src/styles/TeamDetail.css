@@ -16,7 +16,8 @@
 .team-detail-modal {
   background: white;
   border-radius: 12px;
-  max-width: 900px;
+  max-width: 1200px;
+  /* Увеличил ширину для больших статистик */
   width: 100%;
   max-height: 90vh;
   overflow-y: auto;
@@ -50,6 +51,7 @@
   display: flex;
   align-items: center;
   gap: 15px;
+  flex: 1;
 }
 
 .team-detail-title h2 {
@@ -67,7 +69,29 @@
 .team-detail-logo {
   border-radius: 8px;
   background: white;
-  padding: 5px;
+  padding: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  margin-right: 15px;
+  display: block !important;
+  min-width: 60px;
+  min-height: 60px;
+  object-fit: contain;
+}
+
+.team-detail-logo-placeholder {
+  border-radius: 8px;
+  background: white;
+  padding: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  margin-right: 15px;
+  min-width: 60px;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  font-size: 24px;
+  font-weight: bold;
 }
 
 .team-detail-close {
@@ -94,7 +118,8 @@
 }
 
 .stat-category {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  /* Уменьшил отступ между категориями */
 }
 
 .category-title {
@@ -108,10 +133,13 @@
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  /* Уменьшил минимальную ширину */
+  gap: 10px;
+  /* Уменьшил отступы */
   background: #f8f9fa;
-  padding: 15px;
+  padding: 12px;
+  /* Уменьшил padding */
   border-radius: 8px;
 }
 
