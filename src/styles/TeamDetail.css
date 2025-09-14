@@ -14,15 +14,17 @@
 }
 
 .team-detail-modal {
-  background: white;
-  border-radius: 12px;
-  max-width: 1200px;
+  background: white !important;
+  border-radius: 12px !important;
+  max-width: 1200px !important;
   /* Увеличил ширину для больших статистик */
-  width: 100%;
-  max-height: 90vh;
-  overflow-y: auto;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  animation: slideIn 0.3s ease-out;
+  width: 100% !important;
+  max-height: 90vh !important;
+  overflow-y: auto !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+  animation: slideIn 0.3s ease-out !important;
+  position: relative !important;
+  z-index: 1001 !important;
 }
 
 @keyframes slideIn {
@@ -38,13 +40,13 @@
 }
 
 .team-detail-header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  padding: 20px;
-  border-radius: 12px 12px 0 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  color: white !important;
+  padding: 20px !important;
+  border-radius: 12px 12px 0 0 !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
 }
 
 .team-detail-title {
@@ -114,7 +116,8 @@
 }
 
 .team-detail-content {
-  padding: 20px;
+  padding: 20px !important;
+  background: white !important;
 }
 
 .stat-category {
@@ -132,15 +135,15 @@
 }
 
 .stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
   /* Уменьшил минимальную ширину */
-  gap: 10px;
+  gap: 10px !important;
   /* Уменьшил отступы */
-  background: #f8f9fa;
-  padding: 12px;
+  background: #f8f9fa !important;
+  padding: 12px !important;
   /* Уменьшил padding */
-  border-radius: 8px;
+  border-radius: 8px !important;
 }
 
 .stat-item {
