@@ -68,9 +68,9 @@ export async function fetchData(teamId: any, tournamentId: any, seasonId: any) {
       "x-rapidapi-key": process.env.RAPIDAPI_KEY,
       "x-rapidapi-host": "sofascore.p.rapidapi.com",
     },
-    next: { 
+    next: {
       revalidate, // Кэширование fetch() на 7 дней
-      tags: [`team-${teamId}-${tournamentId}-${seasonId}`] // Теги для инвалидации кэша
+      tags: [`team-${teamId}-${tournamentId}-${seasonId}`], // Теги для инвалидации кэша
     },
   };
 
