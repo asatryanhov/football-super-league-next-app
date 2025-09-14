@@ -3,6 +3,7 @@ import images from "@/components/images";
 import useStore from "@/store/useStore";
 import TeamItem from "@/components/TeamItem";
 import TeamDetail from "@/components/TeamDetail";
+import TeamComparison from "@/components/TeamComparison";
 import { useState, useEffect } from "react";
 import "@/styles/App.css";
 
@@ -17,6 +18,7 @@ export default function App() {
   const { teamsData, refreshData } = useStore();
   const [selectedTeam, setSelectedTeam] = useState<Team | null>(null);
   const [isDetailOpen, setIsDetailOpen] = useState(false);
+  const [isComparisonOpen, setIsComparisonOpen] = useState(false);
 
   // Автоматическое обновление каждый понедельник в 00:30
   useEffect(() => {
@@ -76,6 +78,14 @@ export default function App() {
   const handleCloseDetail = () => {
     setIsDetailOpen(false);
     setSelectedTeam(null);
+  };
+
+  const handleOpenComparison = () => {
+    setIsComparisonOpen(true);
+  };
+
+  const handleCloseComparison = () => {
+    setIsComparisonOpen(false);
   };
 
   if (!teamsData) {
@@ -396,6 +406,13 @@ export default function App() {
         />
       )}
 
+      {isComparisonOpen && (
+        <TeamComparison
+          teams={allTeams.filter((team) => team.hasData)}
+          onClose={handleCloseComparison}
+        />
+      )}
+
       {teamsData && (
         <div className="team-block-wrapper">
           <div className="stats-container">
@@ -476,6 +493,50 @@ export default function App() {
           </div>
         </div>
       )}
+
+      {/* Fixed Comparison Button on Right Side */}
+      <div
+        style={{
+          position: "fixed",
+          right: "20px",
+          top: "50%",
+          transform: "translateY(-50%)",
+          zIndex: 1000,
+        }}>
+        <button
+          onClick={handleOpenComparison}
+          style={{
+            width: "60px",
+            height: "60px",
+            backgroundColor: "#667eea",
+            color: "white",
+            border: "none",
+            borderRadius: "50%",
+            cursor: "pointer",
+            fontSize: "24px",
+            fontWeight: "600",
+            boxShadow: "0 4px 15px rgba(102, 126, 234, 0.4)",
+            transition: "all 0.3s ease",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+          onMouseOver={(e) => {
+            (e.target as HTMLButtonElement).style.backgroundColor = "#5a67d8";
+            (e.target as HTMLButtonElement).style.transform = "scale(1.1)";
+            (e.target as HTMLButtonElement).style.boxShadow =
+              "0 6px 20px rgba(102, 126, 234, 0.6)";
+          }}
+          onMouseOut={(e) => {
+            (e.target as HTMLButtonElement).style.backgroundColor = "#667eea";
+            (e.target as HTMLButtonElement).style.transform = "scale(1)";
+            (e.target as HTMLButtonElement).style.boxShadow =
+              "0 4px 15px rgba(102, 126, 234, 0.4)";
+          }}
+          title="Сравнить команды">
+          ⚖️
+        </button>
+      </div>
     </div>
   );
 }
