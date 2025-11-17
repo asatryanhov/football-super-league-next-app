@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обновление статистики команд</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        button {
+            background: #0070f3;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #0051cc;
+        }
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+        .success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        .loading {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+        }
+        pre {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔄 Обновление статистики команд</h1>
+        <p>Нажмите кнопку ниже, чтобы обновить статистику всех 20 команд Суперлиги.</p>
+        
+        <button id="updateBtn" onclick="updateStats()">Обновить статистику</button>
+        
+        <div id="result"></div>
+    </div>
+
+    <script>
+        async function updateStats() {
+            const btn = document.getElementById('updateBtn');
+            const resultDiv = document.getElementById('result');
+            
+            btn.disabled = true;
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'loading';
+            resultDiv.innerHTML = '⏳ Обновление данных... Это может занять несколько минут.';
+            
+            try {
+                const response = await fetch('http://localhost:3001/api/cron/update-stats', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': 'Bearer football-super-league-cron-secret-2024'
+                    }
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    resultDiv.className = 'success';
+                    resultDiv.innerHTML = `
+                        <h3>✅ Обновление завершено успешно!</h3>
+                        <p><strong>Всего команд:</strong> ${data.totalTeams}</p>
+                        <p><strong>Успешно обновлено:</strong> ${data.successCount}</p>
+                        <p><strong>Ошибок:</strong> ${data.errorCount}</p>
+                        <p><strong>Время обновления:</strong> ${new Date(data.timestamp).toLocaleString('ru-RU')}</p>
+                        <details>
+                            <summary>Показать подробности</summary>
+                            <pre>${JSON.stringify(data.results, null, 2)}</pre>
+                        </details>
+                    `;
+                } else {
+                    throw new Error(data.error || 'Ошибка при обновлении');
+                }
+            } catch (error) {
+                resultDiv.className = 'error';
+                resultDiv.innerHTML = `
+                    <h3>❌ Ошибка обновления</h3>
+                    <p>${error.message}</p>
+                `;
+            } finally {
+                btn.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>
